@@ -11,7 +11,7 @@ so The linear system of equations 2X+3Y=9 & 7X+9Y=-6 has **`only one solution`**
 
 
 #### 3. Equation 7x+9y=-5 has how many keys?
-Ans: **`2`**
+Ans: **`infinite number of keys.`**
 
 
 #### 4. Equation ax^2+bx+c=0 will be ............. for a=b=c=0 .
