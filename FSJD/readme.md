@@ -2,6 +2,70 @@
 
 `Q1. Write a Java program that uses polymorphism by defining an interface called Shape with methods to calculate the area and perimeter of a shape. Then create classes that implement the Shape interface for different types of shapes, such as circles and triangles.`
 
+**Solution :**
+
+```Java
+interface Shape {
+    double calculateArea();
+    double calculatePerimeter();
+}
+
+class Circle implements Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+class Triangle implements Shape {
+    private double sideA;
+    private double sideB;
+    private double sideC;
+
+    public Triangle(double sideA, double sideB, double sideC) {
+        this.sideA = sideA;
+        this.sideB = sideB;
+        this.sideC = sideC;
+    }
+
+    @Override
+    public double calculateArea() {
+        // Using Heron's formula to calculate the area of a triangle
+        double s = (sideA + sideB + sideC) / 2;
+        return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return sideA + sideB + sideC;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle(5);
+        System.out.println("Circle - Area: " + circle.calculateArea());
+        System.out.println("Circle - Perimeter: " + circle.calculatePerimeter());
+
+        Shape triangle = new Triangle(3, 4, 5);
+        System.out.println("Triangle - Area: " + triangle.calculateArea());
+        System.out.println("Triangle - Perimeter: " + triangle.calculatePerimeter());
+    }
+}
+```
+
+
 Q2. Write a Java program to invoke parent class constructor from a child class. Create Child class object and parent class constructor must be invoked. Demonstrate by writing a program. Also explain key points about Constructor.
 
 `Q3. Write a Java programme that takes an integer from the user and throws an exception if it is negative.Demonstrate Exception handling of same program as solution.`
