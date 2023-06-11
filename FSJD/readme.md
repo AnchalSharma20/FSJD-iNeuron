@@ -434,7 +434,117 @@ class OddRunnable implements Runnable {
 
 `Q9. Write a Java program that implements a producer-consumer model using multithreading. The program should have a producer thread that generates random numbers and adds them to a queue, and a consumer thread that reads numbers from the queue and calculates their sum. The program should use synchronization to ensure that the queue is accessed by only one thread at a time.`
 
+**Solution :**
+
+```Java
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class ProducerConsumerExample {
+    private static final int QUEUE_CAPACITY = 10;
+    private static final int NUM_VALUES_TO_PRODUCE = 20;
+
+    public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedList<>();
+
+        Thread producerThread = new Thread(() -> {
+            for (int i = 0; i < NUM_VALUES_TO_PRODUCE; i++) {
+                synchronized (queue) {
+                    while (queue.size() == QUEUE_CAPACITY) {
+                        try {
+                            queue.wait(); // Wait if the queue is full
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    int value = (int) (Math.random() * 100);
+                    queue.offer(value);
+                    System.out.println("Produced: " + value);
+                    queue.notifyAll(); // Notify the consumer that a value is produced
+                }
+            }
+        });
+
+        Thread consumerThread = new Thread(() -> {
+            int sum = 0;
+            for (int i = 0; i < NUM_VALUES_TO_PRODUCE; i++) {
+                synchronized (queue) {
+                    while (queue.isEmpty()) {
+                        try {
+                            queue.wait(); // Wait if the queue is empty
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    int value = queue.poll();
+                    sum += value;
+                    System.out.println("Consumed: " + value);
+                    queue.notifyAll(); // Notify the producer that a value is consumed
+                }
+            }
+            System.out.println("Sum of consumed values: " + sum);
+        });
+
+        producerThread.start();
+        consumerThread.start();
+    }
+}
+```
+
 Q10. Write a Java program that reads a set of integers from the user and stores them in a List. The program should then find the second largest and second smallest elements in the List.
+
+**Solution :**
+
+```Java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SecondLargestSmallestExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> numbers = new ArrayList<>();
+
+        System.out.print("Enter the number of integers: ");
+        int count = scanner.nextInt();
+
+        System.out.println("Enter the integers:");
+        for (int i = 0; i < count; i++) {
+            int num = scanner.nextInt();
+            numbers.add(num);
+        }
+
+        if (numbers.size() < 2) {
+            System.out.println("At least 2 integers are required.");
+            return;
+        }
+
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+        int smallest = Integer.MAX_VALUE;
+        int secondSmallest = Integer.MAX_VALUE;
+
+        for (int num : numbers) {
+            if (num > largest) {
+                secondLargest = largest;
+                largest = num;
+            } else if (num > secondLargest && num != largest) {
+                secondLargest = num;
+            }
+
+            if (num < smallest) {
+                secondSmallest = smallest;
+                smallest = num;
+            } else if (num < secondSmallest && num != smallest) {
+                secondSmallest = num;
+            }
+        }
+
+        System.out.println("Second largest element: " + secondLargest);
+        System.out.println("Second smallest element: " + secondSmallest);
+    }
+}
+```
 
 # ← JDBC →
 
