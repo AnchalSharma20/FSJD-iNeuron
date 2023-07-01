@@ -1,6 +1,6 @@
 # ← Java →
 
-`Q1. Write a Java program that uses polymorphism by defining an interface called Shape with methods to calculate the area and perimeter of a shape. Then create classes that implement the Shape interface for different types of shapes, such as circles and triangles.`
+Q1. Write a Java program that uses polymorphism by defining an interface called Shape with methods to calculate the area and perimeter of a shape. Then create classes that implement the Shape interface for different types of shapes, such as circles and triangles.
 
 **Solution :**
 
@@ -93,6 +93,7 @@ public class Main {
 ```
 
 ### Key points about constructors:
+```
 - A constructor is a special method in a class that is used to initialize objects of that class. It has the same name as the class and doesn't have a return type, not even void.
 - If a class doesn't define any constructors, a default constructor (with no arguments) is automatically provided by the Java compiler.
 - Constructors can be overloaded, meaning a class can have multiple constructors with different parameters.
@@ -102,9 +103,9 @@ public class Main {
 - The order of execution in the above example is such that the parent class constructor is invoked first, followed by the child class constructor.
 - Constructors can have access modifiers (public, private, protected), which control the visibility of the constructor.
 - Constructors can also have other modifiers like static, final, and abstract, but they are rarely used in combination with constructors.
+```
 
-
-`Q3. Write a Java programme that takes an integer from the user and throws an exception if it is negative.Demonstrate Exception handling of same program as solution.`
+Q3. Write a Java programme that takes an integer from the user and throws an exception if it is negative.Demonstrate Exception handling of same program as solution.
 
 **Solution :**
 
@@ -218,13 +219,11 @@ public class Main {
 }
 ```
 
-`Q5. Demonstrate the difference between abstract class and interface by writing programs as well as in keypoints.`
+Q5. Demonstrate the difference between abstract class and interface by writing programs as well as in keypoints.
 
 **Solution :**
 
-Here's an example that demonstrates the difference between an abstract class and an interface in Java:
-
-Example 1: Using an Abstract Class
+#### Example 1: Using an Abstract Class
 
 ```java
 abstract class Animal {
@@ -249,7 +248,7 @@ public class Main {
     }
 }
 ```
-Example 2: Using an Interface
+#### Example 2: Using an Interface
 
 ```Java
 interface Animal {
@@ -277,14 +276,16 @@ public class Main {
 ```
 
 ### Key points about abstract classes:
+```
 - An abstract class is a class that cannot be instantiated but can be subclassed.
 - It may contain both abstract and non-abstract methods.
 - Abstract methods are declared without a body and must be implemented in the subclass.
 - Abstract classes can have constructors, instance variables, and concrete methods.
 - Subclasses of an abstract class must provide an implementation for all abstract methods.
 - An abstract class can provide a common implementation for the methods, which can be inherited by its subclasses.
-
+```
 ### Key points about interfaces:
+```
 - An interface is a blueprint of a class and represents a contract.
 - It cannot be instantiated directly; instead, a class implements an interface.
 - It contains only method signatures without any implementation.
@@ -293,7 +294,7 @@ public class Main {
 - A class can implement multiple interfaces.
 - An interface provides a way to achieve multiple inheritance in Java.
 - When a class implements an interface, it must provide an implementation for all the methods defined in the interface
-
+```
 
 Q6. Write a Java program that uses stream api to perform operations on a large data set, such as sorting or filtering the data.
 
@@ -339,7 +340,7 @@ public class StreamExample {
 ```
 
 
-`Q7. Create a Java program that implements a binary search algorithm. The program should accept user input for the target value and search for it in a sorted array. The program should return the index of the target value if found or a message if not found.`
+Q7. Create a Java program that implements a binary search algorithm. The program should accept user input for the target value and search for it in a sorted array. The program should return the index of the target value if found or a message if not found.
 
 **Solution :**
 
@@ -432,7 +433,7 @@ class OddRunnable implements Runnable {
 }
 ```
 
-`Q9. Write a Java program that implements a producer-consumer model using multithreading. The program should have a producer thread that generates random numbers and adds them to a queue, and a consumer thread that reads numbers from the queue and calculates their sum. The program should use synchronization to ensure that the queue is accessed by only one thread at a time.`
+Q9. Write a Java program that implements a producer-consumer model using multithreading. The program should have a producer thread that generates random numbers and adds them to a queue, and a consumer thread that reads numbers from the queue and calculates their sum. The program should use synchronization to ensure that the queue is accessed by only one thread at a time.
 
 **Solution :**
 
